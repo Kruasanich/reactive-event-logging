@@ -1,0 +1,41 @@
+messaging:
+  rabbitmq:
+    exchange: income.direct.from.system.direct
+    incomeQueue: income-queue
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    prometheus:
+      enabled: true
+
+spring:
+  application:
+    name: event-service
+
+  main:
+    banner-mode: "off"
+
+  jackson:
+    mapper:
+      DEFAULT_VIEW_INCLUSION: true
+    serialization:
+      indent_output: true
+      WRITE_DATES_AS_TIMESTAMPS: false
+    deserialization:
+      fail-on-ignored-properties: true
+      fail-on-unknown-properties: true
+      fail-on-missing-creator-properties: true
+      fail-on-null-creator-properties: true
+      ACCEPT_SINGLE_VALUE_AS_ARRAY: true
+    default-property-inclusion: non_empty
+
+  rabbitmq:
+    host: ${messaging.rabbit_mq_host:localhost}
+    port: ${messaging.rabbit_mq_port:5672}
+    username: ${messaging.rabbit_mq_user:event-service-user}
+    password: ${messaging.rabbit_mq_password:secret}
