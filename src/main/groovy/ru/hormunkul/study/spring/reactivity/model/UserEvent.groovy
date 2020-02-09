@@ -4,7 +4,7 @@ import ru.hormunkul.study.spring.reactivity.model.common.ActionType
 
 import java.time.LocalDateTime
 
-class UserAction {
+class UserEvent implements Serializable {
     String userId
     LocalDateTime created = LocalDateTime.now()
     ActionType type = ActionType.LOGIN

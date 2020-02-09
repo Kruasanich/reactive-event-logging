@@ -7,7 +7,7 @@ import ru.hormunkul.study.spring.reactivity.action.PrintMessageEvent
 
 @Slf4j
 @Component
-class PrintEventListener implements ApplicationListener<PrintMessageEvent> {
+class LoggingEventListener implements ApplicationListener<PrintMessageEvent> {
     @Override
     void onApplicationEvent(PrintMessageEvent event) {
         log.info("Recive message: ${event.message}")
