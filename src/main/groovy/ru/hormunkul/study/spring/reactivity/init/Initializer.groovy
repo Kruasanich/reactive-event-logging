@@ -7,7 +7,7 @@ import org.springframework.boot.CommandLineRunner
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux
-import ru.hormunkul.study.spring.reactivity.action.PrintMessageEvent
+import ru.hormunkul.study.spring.reactivity.action.LoggingMessageEvent
 import ru.hormunkul.study.spring.reactivity.model.UserEvent
 
 @Slf4j
@@ -29,11 +29,11 @@ class Initializer implements CommandLineRunner {
     void run(String... args) throws Exception {
         log.info("Application initialized! Ready for work and do all what we need!")
 
-        publisher.publishEvent(new PrintMessageEvent(this, "Event from Initializer!"))
+        publisher.publishEvent(new LoggingMessageEvent(this, "Event from Initializer!"))
 
         Flux.just("First", "Second", "Third")
             .subscribe {
-                publisher.publishEvent(new PrintMessageEvent(this, it))
+                publisher.publishEvent(new LoggingMessageEvent(this, it))
             }
         rabbitTemplate.convertAndSend(incomeQueue.name, new UserEvent(userId: 1))
     }

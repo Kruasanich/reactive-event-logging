@@ -3,13 +3,13 @@ package ru.hormunkul.study.spring.reactivity.action.listener
 import groovy.util.logging.Slf4j
 import org.springframework.context.ApplicationListener
 import org.springframework.stereotype.Component
-import ru.hormunkul.study.spring.reactivity.action.PrintMessageEvent
+import ru.hormunkul.study.spring.reactivity.action.LoggingMessageEvent
 
 @Slf4j
 @Component
-class LoggingEventListener implements ApplicationListener<PrintMessageEvent> {
+class LoggingEventListener implements ApplicationListener<LoggingMessageEvent> {
     @Override
-    void onApplicationEvent(PrintMessageEvent event) {
+    void onApplicationEvent(LoggingMessageEvent event) {
         log.info("Recive message: ${event.message}")
     }
 }

@@ -10,6 +10,6 @@ import org.springframework.stereotype.Component
 class RefreshedActionListener implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     void onApplicationEvent(ContextRefreshedEvent event) {
-        log.info("Context refreshed!")
+        log.info("Context refreshed! Application ready for work!")
     }
 }

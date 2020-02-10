@@ -4,7 +4,7 @@ package ru.hormunkul.study.spring.reactivity.messaging.listener
 import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
-import ru.hormunkul.study.spring.reactivity.action.PrintMessageEvent
+import ru.hormunkul.study.spring.reactivity.action.LoggingMessageEvent
 import ru.hormunkul.study.spring.reactivity.model.UserEvent
 
 @Service
@@ -15,11 +15,15 @@ class UserEventListener {
         this.publisher = publisher
     }
 
-    @RabbitListener(queues = ["\${messaging.rabbitmq.incomeQueue}"])
+    /**
+     * Listener of user actions.
+     * @param userEvent - Event witch user had made.
+     */
+    @RabbitListener(queues = ["\${messaging.rabbitmq.incomeQueue}"], concurrency = "2")
     void userActionHandler(UserEvent userEvent) {
         if(userEvent != null) {
             publisher.publishEvent(
-                    new PrintMessageEvent(
+                    new LoggingMessageEvent(
                             this,
                             "Receive user event from rabbitmq with id = ${userEvent.userId} and time = " +
                                     "${userEvent.created}"
