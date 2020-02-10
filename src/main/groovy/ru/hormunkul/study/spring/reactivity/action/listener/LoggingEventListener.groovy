@@ -5,6 +5,9 @@ import org.springframework.context.ApplicationListener
 import org.springframework.stereotype.Component
 import ru.hormunkul.study.spring.reactivity.action.LoggingMessageEvent
 
+/**
+ * Logging all message witch generate system.
+ */
 @Slf4j
 @Component
 class LoggingEventListener implements ApplicationListener<LoggingMessageEvent> {

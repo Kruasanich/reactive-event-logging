@@ -6,6 +6,9 @@ import org.springframework.context.event.ApplicationEventMulticaster
 import org.springframework.context.event.SimpleApplicationEventMulticaster
 import org.springframework.core.task.SimpleAsyncTaskExecutor
 
+/**
+ * The configuration for asynchronous event listener.
+ */
 @Configuration
 class EventLoopConfiguration {
     @Bean
