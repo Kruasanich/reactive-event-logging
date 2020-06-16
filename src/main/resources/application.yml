@@ -39,3 +39,10 @@ spring:
     port: ${messaging.rabbit_mq_port:5672}
     username: ${messaging.rabbit_mq_user:event-service-user}
     password: ${messaging.rabbit_mq_password:secret}
+
+
+    {
+      "userId": "1f1ff74e-1e9e-4496-b061-ea50b4741bc1",
+      "created": "2020-02-12T17:23:43.404614",
+      "type": "LOGIN"
+    }
